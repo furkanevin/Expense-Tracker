@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container">
-      <h1>Selam</h1>
-      <form onsubmit="fonksiyon()">
-        <div class="form-harcama">
-          <label for="durum" for="harcama">Harcama:</label>
-          <input type="text" id="harcama" placeholder="isim" />
+        <h1>Selam</h1>
+        <form onsubmit="addExpense(event)">
+            <div class="form-harcama">
+                <label for="harcama">Harcama:</label>
+                <input type="text" id="harcama" placeholder="isim" />
+            </div>
+
+            <div class="form-fiyat">
+                <label for="fiyat">Fiyat:</label>
+                <input type="number" id="fiyat" value="0" placeholder="fiyat" />
+            </div>
+
+            <div class="form-durum">
+                <input type="checkbox" id="durum" placeholder="ödendi mi?" />
+                <label for="durum">Ödendi mi?</label>
+            </div>
+            <button type="submit">Ekle</button>
+        </form>
+
+        <div id="liste">
+            <!--! Harcama -->
+            <div class="harcama">
+                <h1>Telefon</h1>
+                <h2 id="cost">6000 &#8378</h2>
+                <div class="buttons">
+                    <img id="paymentBtn" src="images/odeme.png" alt="">
+                    <img id="deleteBtn" src="images/sil.png" />
+                </div>
+            </div>
+            <!--! Harcama -->
         </div>
 
-        <div class="form-fiyat">
-          <label for="durum" for="harcama">Fiyat:</label>
-          <input type="text" id="Fiyat" placeholder="fiyat" />
-        </div>
 
-        <div class="form-durum">
-          <input type="checkbox" id="durum" placeholder="ödendi mi?" />
-          <label for="durum">Ödendi mi?</label>
-        </div>
-
-        <button type="submit">Ekle</button>
-      </form>
-
-      <div class="liste"></div>
     </div>
     <script src="/app.js"></script>
-  </body>
+</body>
+
 </html>
