@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Merienda&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -14,10 +13,11 @@ body {
   justify-content: center;
   font-family: 'Raleway', sans-serif;
   flex-direction: column;
-  gap: 20px;
+  gap: 50px;
 }
 .container {
-  width: 80vh;
+  min-width: 60vh;
+  max-width: 80vh;
   height: 70vh;
   background-color: white;
   border-radius: 10px;
@@ -29,7 +29,26 @@ body {
 }
 
 .logo {
-  color: aqua;
+  color: #08d9d6;
+  text-shadow: 2px 2px 20px #08d9d6a7;
+  font-family: 'Inconsolata', monospace;
+  letter-spacing: 2px;
+}
+.greet {
+  font-size: 25px;
+  align-self: flex-start;
+}
+.greet input {
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-family: 'Merienda', cursive;
+  font-weight: 600;
+  font-size: 25px;
+}
+.greet input::placeholder {
+  font-size: 17px;
+  font-weight: 400;
 }
 
 form {
@@ -41,20 +60,27 @@ form {
 
 .form-durum {
   display: flex;
+  align-items: center;
   gap: 20px;
   accent-color: green;
+  min-width: 250px;
+  max-width: 400px;
 }
 
 .form-harcama {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  min-width: 250px;
+  max-width: 400px;
 }
 
 .form-fiyat {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  min-width: 250px;
+  max-width: 400px;
 }
 
 .double {
@@ -63,14 +89,19 @@ form {
 }
 
 input {
-  padding: 5px 10px;
+  padding: 10px 20px;
   border-radius: 5px;
   border: 1px solid rgb(107, 107, 107);
   outline: none;
 }
+#durum {
+  width: 15px;
+  height: 15px;
+}
+
 button {
-  padding: 5px 10px;
-  width: 50%;
+  padding: 10px 50px;
+  width: 100%;
   border-radius: 5px;
   background-color: red;
   color: white;
@@ -186,5 +217,15 @@ select::-ms-expand {
 }
 
 .toplamDiv {
+  font-size: 20px;
+  background-color: #2c3e50;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.toplamDiv span {
   font-size: 25px;
+  color: #08d9d6;
+  padding: 0 10px;
 }

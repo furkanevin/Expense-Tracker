@@ -1,9 +1,17 @@
 const harcamaInput = document.getElementById('harcama');
 const fiyatInput = document.getElementById('fiyat');
 const durumInput = document.getElementById('durum');
+const nameInput = document.getElementById('name');
 const listeContainer = document.getElementById('liste');
 const toplamKutu = document.querySelector('.toplam');
 const filter = document.querySelector('select');
+
+//! username
+const username = localStorage.getItem('username') || '';
+nameInput.value = username;
+nameInput.addEventListener('change', (e) => {
+  localStorage.setItem('username', e.target.value);
+});
 
 listeContainer.addEventListener('click', handleClick);
 filter.addEventListener('change', handleFilter);
@@ -12,7 +20,7 @@ const expenses = [];
 
 function updateToplam() {
   var toplam = expenses.reduce((toplam, fiyat) => toplam + fiyat, 0);
-  toplamKutu.innerText = `Toplam Harcama: ${toplam}`;
+  toplamKutu.innerText = toplam;
 }
 
 function addExpense(event) {
@@ -48,7 +56,7 @@ function addExpense(event) {
   listeContainer.appendChild(harcamaDiv);
 
   //? inputları sıfırlama
-  harcamaInput.value = 'a';
+  harcamaInput.value = '';
   fiyatInput.value = '0';
   durumInput.checked = false;
 }

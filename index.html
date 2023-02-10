@@ -11,11 +11,15 @@
   <body>
     <h1 class="logo">Harcama Hesaplayıcı</h1>
     <div class="container">
+      <h3 class="greet">
+        Hoşgeldin,
+        <input type="text" id="name" placeholder="isminizi giriniz" />
+      </h3>
       <form onsubmit="addExpense(event)">
         <div class="double">
           <div class="form-harcama">
             <label for="harcama">Harcama:</label>
-            <input type="text" id="harcama" placeholder="isim" />
+            <input type="text" id="harcama" placeholder="Gider ismi.." />
           </div>
           <div class="form-fiyat">
             <label for="fiyat">Fiyat:</label>
@@ -23,13 +27,16 @@
           </div>
         </div>
 
-        <div class="form-durum">
-          <input type="checkbox" id="durum" placeholder="ödendi mi?" />
-          <label for="durum">Ödendi mi?</label>
+        <div class="double">
+          <div class="form-durum">
+            <input type="checkbox" id="durum" placeholder="ödendi mi?" />
+            <label for="durum">Ödendi</label>
+          </div>
+          <button type="submit">Ekle</button>
         </div>
-        <button type="submit">Ekle</button>
+
         <div class="toplamDiv">
-          <span class="toplam"> Toplam Harcama: 0</span>&#8378;
+          Toplam Harcama:<span class="toplam">0</span>&#8378;
         </div>
         <div class="select">
           <select>
