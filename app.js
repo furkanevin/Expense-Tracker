@@ -10,10 +10,9 @@ filter.addEventListener('change', handleFilter);
 
 const expenses = [];
 
-function updateToplam(param) {
+function updateToplam() {
   var toplam = expenses.reduce((toplam, fiyat) => toplam + fiyat, 0);
-  //TODO DÜZELT
-  toplamKutu.innerText = `Toplam Harcama: ${param ? toplam - param : toplam}`;
+  toplamKutu.innerText = `Toplam Harcama: ${toplam}`;
 }
 
 function addExpense(event) {
@@ -68,7 +67,8 @@ function handleClick(e) {
   if (e.target.id === 'deleteBtn') {
     const harcama = item.parentElement.parentElement;
     const harcamaFiyat = harcama.querySelector('h2').innerText;
-    updateToplam(Number(harcamaFiyat));
+    expenses.push(-Number(harcamaFiyat));
+    updateToplam();
 
     harcama.classList.add('fall');
     harcama.addEventListener('transitionend', () => {
