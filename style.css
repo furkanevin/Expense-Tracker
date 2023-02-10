@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +12,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Raleway', sans-serif;
 }
 .container {
   width: 80vh;
@@ -32,11 +35,13 @@ form {
 .form-durum {
   display: flex;
   gap: 20px;
+  accent-color: green;
 }
 
 .form-harcama {
   display: flex;
   flex-direction: column;
+
   gap: 10px;
 }
 
@@ -90,6 +95,7 @@ button:hover {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   padding: 10px;
   border-radius: 10px;
+  transition: all 0.5s ease;
 }
 
 .btn {
@@ -110,4 +116,59 @@ button:hover {
 }
 .odendi h2 {
   color: green !important;
+}
+
+/* Select Kopya */
+:root {
+  --background-gradient: linear-gradient(30deg, #f39c12 30%, #f1c40f);
+  --gray: #34495e;
+  --darkgray: #2c3e50;
+}
+
+select {
+  /* Reset Select */
+  appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  /* Personalize */
+  flex: 1;
+  padding: 0 1em;
+  color: #fff;
+  background-color: var(--darkgray);
+  background-image: none;
+  cursor: pointer;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select wrapper */
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  border-radius: 0.25em;
+  overflow: hidden;
+}
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #34495e;
+  transition: 0.25s all ease;
+  pointer-events: none;
+}
+/* Transition */
+.select:hover::after {
+  color: #f39c12;
+}
+
+.fall {
+  transform: translateY(100px) rotateZ(20deg);
+  opacity: 0;
 }

@@ -2,8 +2,19 @@ const harcamaInput = document.getElementById('harcama');
 const fiyatInput = document.getElementById('fiyat');
 const durumInput = document.getElementById('durum');
 const listeContainer = document.getElementById('liste');
+const toplamKutu = document.querySelector('.toplam');
+const filter = document.querySelector('select');
 
 listeContainer.addEventListener('click', handleClick);
+filter.addEventListener('change', handleFilter);
+
+const expenses = [];
+
+function updateToplam(param) {
+  var toplam = expenses.reduce((toplam, fiyat) => toplam + fiyat, 0);
+  //TODO DÜZELT
+  toplamKutu.innerText = `Toplam Harcama: ${param ? toplam - param : toplam}`;
+}
 
 function addExpense(event) {
   event.preventDefault();
@@ -13,16 +24,21 @@ function addExpense(event) {
     return;
   }
 
+  //! toplam fiyat
+  expenses.push(Number(fiyatInput?.value));
+  updateToplam();
+
   //Kutucuk oluşturup classını verme
   const harcamaDiv = document.createElement('div');
   harcamaDiv.classList.add('harcama');
+  if (durumInput.checked) {
+    harcamaDiv.classList.add('odendi');
+  }
 
   //içindeki içeriği belirleme
   harcamaDiv.innerHTML = `
   <h1>${harcamaInput.value}</h1>
-  <h2 id="cost" class="cost ${durumInput.checked ? 'odendi' : ''}" >${
-    fiyatInput.value
-  } &#8378</h2>
+  <h2 id="cost">${fiyatInput.value} </h2>
   <div class="buttons">
       <img id="paymentBtn" src="images/odeme.png" />
       <img id="deleteBtn" src="images/sil.png" />
@@ -38,22 +54,59 @@ function addExpense(event) {
   durumInput.checked = false;
 }
 
-//!Silme Ve Onay işlemi
+//!Silme Ve Ödendi işlemi
 function handleDelete(e) {
   const item = e.target;
   if (e.target.id === 'deleteBtn') {
     item.parentElement.parentElement.remove();
   }
 }
+
 function handleClick(e) {
   const item = e.target;
 
   if (e.target.id === 'deleteBtn') {
-    item.parentElement.parentElement.remove();
+    const harcama = item.parentElement.parentElement;
+    const harcamaFiyat = harcama.querySelector('h2').innerText;
+    updateToplam(Number(harcamaFiyat));
+
+    harcama.classList.add('fall');
+    harcama.addEventListener('transitionend', () => {
+      harcama.remove();
+    });
   } else if (e.target.id === 'paymentBtn') {
-    const todo = item.parentElement.parentElement;
-    todo.classList.toggle('odendi');
+    const harcama = item.parentElement.parentElement;
+    harcama.classList.toggle('odendi');
   } else {
     return;
   }
+}
+
+//!! Filtreleme işlemi
+function handleFilter(e) {
+  const items = listeContainer.childNodes;
+  console.log(items);
+  items.forEach((item) => {
+    switch (e.target.value) {
+      case 'hepsi':
+        item.style.display = 'flex';
+        break;
+
+      case 'odendi':
+        if (item.classList.contains('odendi')) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+        break;
+
+      case 'odenmedi':
+        if (!item.classList.contains('odendi')) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+        break;
+    }
+  });
 }
