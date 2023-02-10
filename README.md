@@ -2,4 +2,4 @@
 Gider hesaplamak için oluşturulan basit bir javascript app
 <h3>Teknolojiler</h3>
 html5 css3 JS <br>
-<img src="https://user-images.githubusercontent.com/109925130/218183385-26f06ee1-9103-4813-aa6d-b62efb80f996.gif"/>
+<img src="https://user-images.githubusercontent.com/109925130/218185192-d6cff22e-677a-40cd-b6d9-54744bbde0af.gif"/>
